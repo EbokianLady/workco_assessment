@@ -5,11 +5,11 @@ const Product = ({ price, inventory, title }) => (
   <div className='product'>
     <span>
       <h3 className='title'>{title}</h3>
-      <h4 className='price'>${price}</h4>
+      <h3 className='price'>${price}</h3>
     </span>
-    <h6 className='remaining'>
+    <h3 className='remaining'>
       {inventory ? `${inventory} REMAINING` : null}
-    </h6>
+    </h3>
   </div>
 )
 

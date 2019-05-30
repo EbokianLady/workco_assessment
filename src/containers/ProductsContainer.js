@@ -1,10 +1,11 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-import { connect } from 'react-redux'
-import { addToCart } from '../actions'
-import { getVisibleProducts } from '../reducers/products'
-import ProductItem from '../components/ProductItem'
-import ProductsList from '../components/ProductsList'
+import React from 'react';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import { addToCart } from '../actions';
+import { getVisibleProducts } from '../reducers/products';
+import ProductItem from '../components/ProductItem';
+import ProductsList from '../components/ProductsList';
+import '../styles/containers/product.scss';
 
 const ProductsContainer = ({ products, addToCart }) => (
   <ProductsList>

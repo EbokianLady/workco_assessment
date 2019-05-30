@@ -1,6 +1,24 @@
 import shop from '../api/shop'
 import * as types from '../constants/ActionTypes'
 
+const hideCartUnsafe = () => ({
+  type: types.HIDE_CART,
+  isVisible: false,
+})
+
+export const hideCart = () => (dispatch, getState) => {
+  dispatch(hideCartUnsafe());
+}
+
+const showCartUnsafe = () => ({
+  type: types.SHOW_CART,
+  isVisible: true,
+})
+
+export const showCart = () => (dispatch, getState) => {
+  dispatch(showCartUnsafe());
+}
+
 const receiveProducts = products => ({
   type: types.RECEIVE_PRODUCTS,
   products: products

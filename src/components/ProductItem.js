@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Product from './Product';
-import '../styles/components/productItem.scss';
 
 import image1 from '../styles/images/image1.png';
 import image2 from '../styles/images/image2.png';
