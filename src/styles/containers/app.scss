@@ -1,0 +1,55 @@
+@import '../fonts.scss';
+@import '../colors.scss';
+
+body {
+  background-color: $lightest-grey;
+  margin: 0px;
+
+  // background-image: url('../../styles/images/mobile-back.png');
+  // background-size: contain;
+}
+
+#root {
+  display: flex;
+  justify-content: center;
+}
+
+.app {
+  color: $charcoal;
+  font-family: $chivo;
+  width: 87.5%;
+
+  header {
+    padding: 22px 0px;
+
+    h2 {
+      font-size: 1.6em;
+      letter-spacing: 0.02em;
+      margin: 6px 0px;
+    }
+
+    .header-info {
+      align-items: center;
+      display: flex;
+      flex-direction: row;
+
+      h6 {
+        font-size: 0.8em;
+        font-weight: 400;
+        letter-spacing: 0.02em;
+        margin: 0px;
+        margin-left: 4px;
+      }
+
+      .cartIcon--header {
+        height: 1em;
+        width: 1.2em;
+      }
+    }
+  }
+}
+
+hr {
+  border-top: 1px solid $lighter-grey;
+  margin: 0px;
+}
