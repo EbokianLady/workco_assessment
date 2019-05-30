@@ -1,0 +1,80 @@
+@import '../fonts.scss';
+@import '../colors.scss';
+
+.productsList {
+  padding-top: 22px;
+}
+
+.productItem {
+  background-color: $white;
+  border-radius: 8px;
+  width: 100%;
+
+  .productImage {
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+    width: 100%;
+    height: 65vw;
+    object-fit: cover;
+  }
+
+  .productInfo {
+    box-sizing: border-box;
+    height: fit-content;
+    margin-bottom: 22px;
+    padding: 18px;
+    padding-bottom: 36px;
+    width: 100%;
+
+    .product {
+      span {
+        align-items: center;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        margin: 0px 0px 10px 5px;
+
+        .title {
+          font-size: 1.3em;
+          font-weight: 400;
+          margin: 0px;
+        }
+
+        .price {
+          font-weight: 300;
+          font-size: 1em;
+          margin: 0px;
+        }
+      }
+
+      .remaining {
+        color: $light-grey;
+        font-family: $helvetica;
+        font-size: 0.8em;
+        font-weight: 300;
+        margin: 0px 0px 20px 5px;
+      }
+    }
+
+    .productButton {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: $blue;
+      border: none;
+      border-radius: 999px;
+      box-sizing: border-box;
+      color: $white;
+      font-family: $helvetica;
+      font-size: 0.8em;
+      font-weight: 300;
+      margin-left: 5px;
+      outline: none;
+      padding: 8px 20px;
+
+      &:hover {
+        background-color: $blue-hover;
+      }
+    }
+  }
+}

@@ -17,15 +17,15 @@ body {
 .app {
   color: $charcoal;
   font-family: $chivo;
-  width: 87.5%;
+  width: 90%;
 
   header {
     padding: 22px 0px;
 
     h2 {
       font-size: 1.6em;
-      letter-spacing: 0.02em;
-      margin: 6px 0px;
+      letter-spacing: -0.01em;
+      margin: 5px 3px;
     }
 
     .header-info {
@@ -34,16 +34,16 @@ body {
       flex-direction: row;
 
       h6 {
-        font-size: 0.8em;
+        font-size: 0.9em;
         font-weight: 400;
-        letter-spacing: 0.02em;
+        letter-spacing: -0.03em;
         margin: 0px;
-        margin-left: 4px;
+        margin-left: 10px;
       }
 
       .cartIcon--header {
-        height: 1em;
-        width: 1.2em;
+        height: 0.8em;
+        width: 1em;
       }
     }
   }

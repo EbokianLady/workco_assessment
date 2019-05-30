@@ -1,9 +1,15 @@
-import React from 'react'
-import PropTypes from 'prop-types'
+import React from 'react';
+import PropTypes from 'prop-types';
 
 const Product = ({ price, inventory, title }) => (
-  <div>
-    {title} - &#36;{price}{inventory ? ` x ${inventory}` : null}
+  <div className='product'>
+    <span>
+      <h3 className='title'>{title}</h3>
+      <h4 className='price'>${price}</h4>
+    </span>
+    <h6 className='remaining'>
+      {inventory ? `${inventory} REMAINING` : null}
+    </h6>
   </div>
 )
 

@@ -1,7 +1,7 @@
 import React from 'react';
 import ProductsContainer from './ProductsContainer';
 import CartContainer from './CartContainer';
-import { ReactComponent as Cart } from '../icons/cart.svg';
+import { ReactComponent as Cart } from '../styles/icons/cart.svg';
 import '../styles/containers/app.scss';
 
 const App = () => (
