@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Product from './Product';
 import CartItem from './CartItem';
+import { ReactComponent as Close } from '../styles/icons/close.svg';
 
 import image1 from '../styles/images/image1.png';
 import image2 from '../styles/images/image2.png';
@@ -29,10 +30,14 @@ const Cart  = ({ products, total, onCheckoutClicked, isVisible, hideCart }) => {
   return (
     <div className='transparency' style={{ display: display }}>
       <div className='cart'>
-        <button onClick={hideCart}>
-          X
-        </button>
-        <h3>Your Cart</h3>
+        <header className='cartHeader'>
+          <h3>Your Cart</h3>
+          <button
+            className='closeButton'
+            onClick={hideCart}>
+            <Close/>
+          </button>
+        </header>
         <hr />
         <div className='cartList'>
           {nodes}

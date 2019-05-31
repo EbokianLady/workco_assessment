@@ -1,5 +1,6 @@
 @import '../fonts.scss';
 @import '../colors.scss';
+@import '../defaults.scss';
 
 .cart {
   background-color: $white;
@@ -9,22 +10,84 @@
   height: 100%;
   width: 100%;
 
+  .cartHeader {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin: 0px;
+
+    .closeButton {
+      cursor: pointer;
+      padding: 0px;
+      margin: 0px;
+      height: 22px;
+      width: 22px;
+      color: $light-grey;
+    }
+
+    h3 {
+      font-size: calc(1.4em + 1.2vw);
+      margin: 0px;
+      margin-top: 30px;
+      margin-bottom: 20px;
+    }
+  }
+
   // background-image: url('../../styles/images/mobile-cart.png');
   // background-size: contain;
 
-  h3 {
-    font-size: calc(1.4em + 1.2vw);
-    margin-top: 30px;
-    margin-bottom: 20px;
-  }
 
   .cartList {
-    margin-top: 20px;
+    overflow: scroll;
+    height: calc(100vh - 200px);
 
     .cartItem {
       display: flex;
-      flex-direction: row;
-      height: 25vw;
+      flex-direction: column;
+      padding: 20px 0px;
+      border-bottom: 1px solid $lighter-grey;
+
+      .cartTop {
+        display: flex;
+        flex-direction: row;
+        height: 25vw;
+      }
+
+      .cartBottom {
+        margin-top: 18px;
+        height: 36px;
+        display: flex;
+        justify-content: space-between;
+
+        .subtractButton {
+          @extend %button;
+          @extend %grey-button;
+          border-top-left-radius: 999px;
+          border-bottom-left-radius: 999px;
+          width: 33%;
+        }
+
+        .quantity {
+          box-sizing: border-box;
+          border: 1px solid $lightest-grey;
+          display: flex;
+          align-items: center;
+          font-family: $lora;
+          font-size: calc(0.7em + 1vw);
+          justify-content: center;
+          margin: 0px;
+          height: 100%;
+          width: 34%;
+        }
+
+        .addButton {
+          @extend %button;
+          @extend %grey-button;
+          border-top-right-radius: 999px;
+          border-bottom-right-radius: 999px;
+          width: 33%;
+        }
+      }
 
       .cartItemImage {
         width: 38%;
@@ -67,10 +130,11 @@
       }
 
       .removeButton {
-        margin: 0px;
-        padding: none;
+        @extend %button;
+        background-color: inherit;
         color: $red;
-        width: fit-content;
+        font-size: calc(0.7em + 1vw);
+        margin-bottom: 6px;
       }
     }
   }
@@ -78,7 +142,6 @@
 
 
 }
-
 
 .transparency {
   align-items: center;

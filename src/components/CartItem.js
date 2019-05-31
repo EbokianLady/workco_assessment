@@ -14,7 +14,7 @@ const productImages = {
 
 const CartItem = ({ product }) => (
   <div className='cartItem'>
-    <div>
+    <div className='cartTop'>
       <img className='cartItemImage' src={productImages[product.id]} alt='' />
       <div className='cartInfo'>
         <Product
@@ -26,12 +26,18 @@ const CartItem = ({ product }) => (
           className='removeButton'
           // onClick={onAddToCartClicked}
           >
-          {'REMOVE'}
+          Remove
         </button>
       </div>
     </div>
-    <div>
-      - 1 +
+    <div className='cartBottom'>
+      <button className='subtractButton'>
+        –
+      </button>
+      <h3 className='quantity'>1</h3>
+      <button className='addButton'>
+        +
+      </button>
     </div>
   </div>
 )

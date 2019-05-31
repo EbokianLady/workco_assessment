@@ -1,0 +1,24 @@
+@import '../colors.scss';
+
+%button {
+  align-items: center;
+  cursor: pointer;
+  border: none;
+  box-sizing: border-box;
+  display: flex;
+  font-family: $helvetica;
+  font-size: 0.8em;
+  justify-content: center;
+  margin: 0px;
+  outline: none;
+  padding: 0px;
+  width: fit-content;
+}
+
+%grey-button {
+  background-color: $lightest-grey;
+
+  &:hover {
+    background-color: $blue;
+  }
+}
