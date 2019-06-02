@@ -1,52 +1,41 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Product from './Product';
-import CartItem from './CartItem';
-import { ReactComponent as Close } from '../styles/icons/close.svg';
-
-import image1 from '../styles/images/image1.png';
-import image2 from '../styles/images/image2.png';
-import image3 from '../styles/images/image3.png';
-
-const productImages = {
-  1: image1,
-  2: image2,
-  3: image3,
-};
+import CartInventory from './CartInventory';
+import { ReactComponent as CloseIcon } from '../styles/icons/close.svg';
+import { ReactComponent as CartIcon } from '../styles/icons/cart.svg';
 
 const Cart  = ({ products, total, onCheckoutClicked, isVisible, hideCart }) => {
   const display = isVisible ? '' : 'none';
   const hasProducts = products.length > 0;
-  const nodes = hasProducts ? (
-    products.map(product =>
-      <CartItem product={product}></CartItem>
-    )
+  const cart = hasProducts ? (
+    <CartInventory
+      products={products}
+      total={total}
+      onCheckoutClicked={onCheckoutClicked}
+    />
   ) : (
-    <em>Please add some products to cart.</em>
-  )
-
-  console.log(isVisible)
+    <div className='emptyCart'>
+      <CartIcon className='emptyCartIcon'/>
+      <h5>Please add some products</h5>
+      <h5>to your cart.</h5>
+    </div>
+  );
 
   return (
-    <div className='transparency' style={{ display: display }}>
+    <div
+      className='transparency'
+      style={{ display: display }}>
       <div className='cart'>
         <header className='cartHeader'>
           <h3>Your Cart</h3>
           <button
             className='closeButton'
             onClick={hideCart}>
-            <Close/>
+            <CloseIcon/>
           </button>
         </header>
         <hr />
-        <div className='cartList'>
-          {nodes}
-        </div>
-        <p>Total: &#36;{total}</p>
-        <button onClick={onCheckoutClicked}
-          disabled={hasProducts ? '' : 'disabled'}>
-          Checkout
-        </button>
+        {cart}
       </div>
     </div>
   )
@@ -55,6 +44,8 @@ const Cart  = ({ products, total, onCheckoutClicked, isVisible, hideCart }) => {
 Cart.propTypes = {
   products: PropTypes.array,
   total: PropTypes.string,
+  isVisible: PropTypes.bool,
+  hideCart: PropTypes.func,
   onCheckoutClicked: PropTypes.func
 }
 

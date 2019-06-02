@@ -9,7 +9,6 @@ const ProductsList = ({ children }) => (
 
 ProductsList.propTypes = {
   children: PropTypes.node,
-  title: PropTypes.string.isRequired
 }
 
 export default ProductsList
