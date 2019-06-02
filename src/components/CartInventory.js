@@ -12,26 +12,19 @@ const CartInventory = ({ products, total, onCheckoutClicked }) => {
   )
 
   return (
-    <div>
-      <div className='cartInventory'>
-        {nodes}
-        <div className='cartSummary'>
-          <span className='row'><h2>Subtotal</h2><h3>${total}</h3></span>
-          <span className='row'><h2>Taxes</h2><h3>${taxes}</h3></span>
-          <hr />
-          <span className='row'><h2>Total</h2><h3>${grandTotal}</h3></span>
-        </div>
-        <button
-          className='updateButton'>
-          Update
-        </button>
+    <div className='cartList'>
+      {nodes}
+      <div className='cartSummary'>
+        <span className='row'><h2>Subtotal</h2><h3>${total}</h3></span>
+        <span className='row'><h2>Taxes</h2><h3>${taxes}</h3></span>
+        <hr />
+        <span className='row'><h2>Total</h2><h3>${grandTotal}</h3></span>
       </div>
       <button
-        className='checkoutButton'
-        onClick={onCheckoutClicked}>
-        CHECKOUT
+        className='updateButton'>
+        Update
       </button>
-    </div >
+    </div>
   )
 }
 

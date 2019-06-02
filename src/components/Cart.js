@@ -5,8 +5,9 @@ import { ReactComponent as CloseIcon } from '../styles/icons/close.svg';
 import { ReactComponent as CartIcon } from '../styles/icons/cart.svg';
 
 const Cart  = ({ products, total, onCheckoutClicked, isVisible, hideCart }) => {
-  const display = isVisible ? '' : 'none';
   const hasProducts = products.length > 0;
+  const display = isVisible ? '' : 'none';
+  const buttonStyle = hasProducts ? '' : 'none';
   const cart = hasProducts ? (
     <CartInventory
       products={products}
@@ -36,6 +37,12 @@ const Cart  = ({ products, total, onCheckoutClicked, isVisible, hideCart }) => {
         </header>
         <hr />
         {cart}
+        <button
+          className='checkoutButton'
+          style={{ display: buttonStyle }}
+          onClick={onCheckoutClicked}>
+          CHECKOUT
+        </button>
       </div>
     </div>
   )

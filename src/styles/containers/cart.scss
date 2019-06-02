@@ -52,8 +52,13 @@
   // background-image: url('../../styles/images/emptyCart-mobile.png');
   // background-size: contain;
 
-
   .cartInventory {
+    overflow: scroll;
+    max-height: calc(98.8vh - 158px);
+  }
+
+
+  .cartList {
     overflow: scroll;
     max-height: calc(98.8vh - 158px);
 
@@ -238,7 +243,7 @@
     max-height: 678px;
     border-radius: 8px;
 
-    .cartInventory {
+    .cartList {
       max-height: calc(100% - 158px);
     }
   }
