@@ -6,8 +6,9 @@ import { getTotal, getCartProducts } from '../reducers';
 import Cart from '../components/Cart';
 import '../styles/containers/cart.scss';
 
-const CartContainer = ({ products, total, checkout, isVisible, hideCart }) => (
+const CartContainer = ({ quantitiesById, products, total, checkout, isVisible, hideCart }) => (
   <Cart
+    quantitiesById={quantitiesById}
     products={products}
     total={total}
     isVisible={isVisible}
@@ -29,6 +30,7 @@ CartContainer.propTypes = {
 }
 
 const mapStateToProps = (state) => ({
+  quantitiesById: state.cart.quantityById,
   products: getCartProducts(state),
   total: getTotal(state),
   isVisible: state.cart.visible,

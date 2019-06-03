@@ -2,6 +2,20 @@
 @import '../colors.scss';
 @import '../defaults.scss';
 
+.transparency {
+  align-items: center;
+  background-color: rgba(0,0,0,.5);
+  display: flex;
+  min-height: 100vh;
+  height: fit-content;
+  justify-content: center;
+  left: 0px;
+  position: absolute;
+  top: 0px;
+  width: 100vw;
+  z-index: 5;
+}
+
 .cart {
   background-color: $white;
   box-sizing: border-box;
@@ -16,15 +30,6 @@
     justify-content: space-between;
     margin: 0px;
 
-    .closeButton {
-      cursor: pointer;
-      padding: 0px;
-      margin: 0px;
-      height: 22px;
-      width: 22px;
-      color: $light-grey;
-    }
-
     h3 {
       font-size: calc(1.4em + 1.2vw);
       margin: 0px;
@@ -32,182 +37,68 @@
       margin-bottom: 20px;
     }
 
-  }
-  .checkoutButton {
-    @extend %button;
-    background-color: $blue;
-    position: absolute;
-    bottom: 0px;
-    left: 0px;
-    width: 100%;
-    height: 45px;
-    color: $white;
-    font-size: calc(0.7em + 1vw);
+    .closeButton {
+      @extend %button;
+      height: 22px;
+      width: 22px;
+      color: $light-grey;
 
-    &:hover {
-      background-color: $blue-hover;
+      &:hover {
+        color: $blue-hover;
+      }
     }
   }
-
-  // background-image: url('../../styles/images/emptyCart-mobile.png');
-  // background-size: contain;
-
-  .cartInventory {
-    overflow: scroll;
-    max-height: calc(98.8vh - 158px);
-  }
-
 
   .cartList {
     overflow: scroll;
     max-height: calc(98.8vh - 158px);
 
+    .cartSummary {
+      .row {
+        margin: 20px 0px;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+
+        h2 {
+          margin: 0px;
+          font-size: calc(0.7em + 1vw);
+        }
+
+        h3 {
+          margin: 0px;
+          font-size: calc(0.7em + 1vw);
+          font-weight: 300;
+        }
+      }
+    }
+
     .updateButton {
       @extend %button;
       background-color: $white;
       border: 1px solid $lighter-grey;
-      width: 100%;
       height: 45px;
       font-family: $chivo;
       font-size: calc(0.7em + 1vw);
-    }
-
-    .cartItem {
-      display: flex;
-      flex-direction: column;
-      padding: 20px 0px;
-      border-bottom: 1px solid $lighter-grey;
-
-      .cartTop {
-        display: flex;
-        flex-direction: row;
-        height: 25vw;
-      }
-
-      .cartBottom {
-        margin-top: 18px;
-        height: 40px;
-        display: flex;
-        justify-content: space-between;
-
-        .subtractButton {
-          @extend %button;
-          @extend %quantity-button;
-          border-top-left-radius: 999px;
-          border-bottom-left-radius: 999px;
-          width: 33%;
-        }
-
-        .quantity {
-          box-sizing: border-box;
-          border: 1px solid $lightest-grey;
-          display: flex;
-          align-items: center;
-          font-family: $lora;
-          font-size: calc(0.7em + 1vw);
-          justify-content: center;
-          margin: 0px;
-          height: 100%;
-          width: 34%;
-        }
-
-        .addButton {
-          @extend %button;
-          @extend %quantity-button;
-          border-top-right-radius: 999px;
-          border-bottom-right-radius: 999px;
-          width: 33%;
-        }
-      }
-
-      .cartItemImage {
-        width: 38%;
-        object-fit: cover;
-        max-height: 195px;
-
-        img {
-          width: 100%;
-          height: 100%;
-        }
-      }
-    }
-
-    .cartInfo {
       width: 100%;
-      margin-left: 10px;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
 
-      .product {
-        span {
-
-          .title {
-            margin: 0px;
-            font-size: calc(0.8em + 1vw);
-          }
-
-          .price {
-            margin: 0px;
-            font-size: calc(0.7em + 1vw);
-            font-weight: 300;
-          }
-        }
-
-        .remaining {
-          display: none;
-        }
-
-      }
-
-      .removeButton {
-        @extend %button;
-        background-color: inherit;
-        color: $red;
-        font-size: calc(0.7em + 1vw);
-        margin-bottom: 6px;
+      &:hover {
+        background-color: $lightest-grey;
       }
     }
   }
 
-
-  .cartSummary {
-    .row {
-      margin: 20px 0px;
-      display: flex;
-      flex-direction: row;
-      justify-content: space-between;
-      align-items: center;
-
-      h2 {
-        margin: 0px;
-        font-size: calc(0.7em + 1vw);
-      }
-
-      h3 {
-        margin: 0px;
-        font-size: calc(0.7em + 1vw);
-        font-weight: 300;
-      }
-    }
+  .checkoutButton {
+    @extend %button;
+    @extend %blue-button;
+    bottom: 0px;
+    font-size: calc(0.7em + 1vw);
+    height: 45px;
+    left: 0px;
+    position: absolute;
+    width: 100%;
   }
-
-}
-
-.transparency {
-  align-items: center;
-  background-color: rgba(0,0,0,.5);
-  display: flex;
-  min-height: 100vh;
-  height: fit-content;
-  justify-content: center;
-  left: 0px;
-  position: absolute;
-  top: 0px;
-  width: 100vw;
-  z-index: 5;
-
-  // display: none;
 }
 
 .emptyCart {
@@ -243,52 +134,30 @@
     max-height: 678px;
     border-radius: 8px;
 
-    .cartList {
-      max-height: calc(100% - 158px);
-    }
-  }
-
-  .cartItem {
-    position: relative;
-    max-height: 195px;
-
-    .cartTop {
-      .cartInfo {
-        justify-content: flex-start;
-        .product {
-          margin-bottom: 10px;
-
-          span {
-            display: flex;
-            flex-direction: row;
-            justify-content: space-between;
-
-            .title {
-              font-size: 21px;
-            }
-
-            .price {
-              font-size: 19px;
-            }
-          }
-        }
+    .cartHeader {
+      h3 {
+        font-size: 32px;
       }
     }
 
-    .cartBottom {
-      position: absolute;
-      right: 0px;
-      bottom: 20px;
-      width: 61%
-    }
-  }
+    .cartList {
+      max-height: calc(100% - 158px);
 
-  .cartInfo {
-    height: 75%;
-    justify-content: flex-start;
+      .cartSummary {
+        .row {
+          h2 {
+            font-size: 19px;
+          }
 
-    .removeButton {
-      font-size: 19px;
+          h3 {
+            font-size: 19px;
+          }
+        }
+      }
+
+      .updateButton {
+        font-size: 19px;
+      }
     }
   }
 
@@ -296,5 +165,4 @@
     border-bottom-left-radius: 8px;
     border-bottom-right-radius: 8px;
   }
-
 }

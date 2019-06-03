@@ -2,12 +2,16 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import CartItem from './CartItem';
 
-const CartInventory = ({ products, total, onCheckoutClicked }) => {
+const CartInventory = ({ quantitiesById, products, total, onCheckoutClicked }) => {
   const taxes = (total * 0.07).toFixed(2);
   const grandTotal = (parseFloat(total) + parseFloat(taxes));
   const nodes = (
     products.map(product =>
-      <CartItem product={product} key={product.id} />
+      <CartItem
+        product={product}
+        quantity={quantitiesById[product.id]}
+        key={product.id}
+      />
     )
   )
 

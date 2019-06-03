@@ -11,14 +11,14 @@ const App = ({ cartItems, showCart }) => {
   const hasProducts = (cartItems.addedIds.length > 0);
   const quantitiesPer = Object.values(cartItems.quantityById);
   const count = quantitiesPer.reduce((acc, el) => acc + el, 0);
+  const plural = (count === 1) ? '' : 's';
   const cartText = hasProducts ? (
-    `You have ${count} items in your cart`
+    `You have ${count} item${plural} in your cart`
   ) : (
     'Your cart is empty'
   );
 
   return (
-
     <div className='app' >
       <header>
         <h2>Acme Store</h2>

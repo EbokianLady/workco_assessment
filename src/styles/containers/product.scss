@@ -1,5 +1,6 @@
 @import '../fonts.scss';
 @import '../colors.scss';
+@import '../defaults.scss';
 
 .productsList {
   padding-top: 20px;
@@ -14,9 +15,6 @@
   margin-bottom: 22px;
   min-width: 250px;
   width: 100%;
-
-  // background-image: url('../../styles/images/item-back-3.png');
-  // background-size: contain;
 
   .productImage {
     border-top-left-radius: 8px;
@@ -66,25 +64,12 @@
     }
 
     .productButton {
-      align-items: center;
-      background-color: $blue;
-      color: $white;
-      cursor: pointer;
-      border: none;
+      @extend %button;
+      @extend %blue-button;
       border-radius: 999px;
-      box-sizing: border-box;
-      display: flex;
-      font-family: $helvetica;
       font-size: calc(0.7em + 1vw);
       font-weight: 300;
-      justify-content: center;
-      outline: none;
       padding: 8px 20px;
-      width: fit-content;
-
-      &:hover {
-        background-color: $blue-hover;
-      }
     }
   }
 }

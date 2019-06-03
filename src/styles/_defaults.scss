@@ -7,7 +7,6 @@
   box-sizing: border-box;
   display: flex;
   font-family: $helvetica;
-  font-size: 0.8em;
   justify-content: center;
   margin: 0px;
   outline: none;
@@ -15,10 +14,45 @@
   width: fit-content;
 }
 
+%blue-button {
+  background-color: $blue;
+  color: $white;
+
+  &:hover {
+    background-color: $blue-hover;
+  }
+
+  &:disabled {
+    opacity: 0.3;
+
+    &:hover {
+      background-color: $blue;
+      cursor: default;
+    }
+  }
+}
+
 %quantity-button {
   background-color: $lightest-grey;
+  color: $grey;
+
+  svg {
+    width: 19px;
+    height: 19px;
+  }
 
   &:hover {
     background-color: $blue;
+    color: $white;
+  }
+
+  &:disabled {
+    opacity: 0.3;
+
+    &:hover {
+      background-color: $lightest-grey;
+      color: $grey;
+      cursor: default;
+    }
   }
 }

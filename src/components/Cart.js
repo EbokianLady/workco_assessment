@@ -4,13 +4,14 @@ import CartInventory from './CartInventory';
 import { ReactComponent as CloseIcon } from '../styles/icons/close.svg';
 import { ReactComponent as CartIcon } from '../styles/icons/cart.svg';
 
-const Cart  = ({ products, total, onCheckoutClicked, isVisible, hideCart }) => {
+const Cart  = ({ quantitiesById, products, total, onCheckoutClicked, isVisible, hideCart }) => {
   const hasProducts = products.length > 0;
   const display = isVisible ? '' : 'none';
   const buttonStyle = hasProducts ? '' : 'none';
   const cart = hasProducts ? (
     <CartInventory
       products={products}
+      quantitiesById={quantitiesById}
       total={total}
       onCheckoutClicked={onCheckoutClicked}
     />

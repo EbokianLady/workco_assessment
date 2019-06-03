@@ -1,6 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Product from './Product';
+import '../styles/components/cartItem.scss';
+import { ReactComponent as AddIcon } from '../styles/icons/add.svg';
+import { ReactComponent as SubtractIcon } from '../styles/icons/subtract.svg';
 
 import image1 from '../styles/images/image1.png';
 import image2 from '../styles/images/image2.png';
@@ -12,7 +15,7 @@ const productImages = {
   3: image3,
 };
 
-const CartItem = ({ product }) => (
+const CartItem = ({ product, quantity }) => (
   <div className='cartItem'>
     <div className='cartTop'>
       <img className='cartItemImage' src={productImages[product.id]} alt='' />
@@ -32,11 +35,11 @@ const CartItem = ({ product }) => (
     </div>
     <div className='cartBottom'>
       <button className='subtractButton'>
-        –
+        <SubtractIcon />
       </button>
-      <h3 className='quantity'>1</h3>
+      <h3 className='quantity'>{quantity}</h3>
       <button className='addButton'>
-        +
+        <AddIcon />
       </button>
     </div>
   </div>
