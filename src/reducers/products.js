@@ -1,5 +1,10 @@
-import { combineReducers } from 'redux'
-import { RECEIVE_PRODUCTS, ADD_TO_CART } from '../constants/ActionTypes'
+import { combineReducers } from 'redux';
+import {
+  ADD_TO_CART,
+  RECEIVE_PRODUCTS,
+  REMOVE_FROM_CART,
+  REMOVE_PRODUCT_FROM_CART
+} from '../constants/ActionTypes';
 
 const products = (state, action) => {
   switch (action.type) {
@@ -7,6 +12,17 @@ const products = (state, action) => {
       return {
         ...state,
         inventory: state.inventory - 1
+      }
+    case REMOVE_FROM_CART:
+      return {
+        ...state,
+        inventory: state.inventory + 1
+      }
+    case REMOVE_PRODUCT_FROM_CART:
+      const { product } = action;
+      return {
+        ...state,
+        inventory: state.inventory + product.quantity
       }
     default:
       return state
@@ -22,6 +38,12 @@ const byId = (state = {}, action) => {
           obj[product.id] = product
           return obj
         }, {})
+      }
+    case REMOVE_PRODUCT_FROM_CART:
+      const { product } = action;
+      return {
+        ...state,
+        [product.id]: products(state[product.id], action)
       }
     default:
       const { productId } = action
@@ -44,13 +66,13 @@ const visibleIds = (state = [], action) => {
   }
 }
 
+export const getProduct = (state, id) =>
+state.byId[id]
+
+export const getVisibleProducts = state =>
+state.visibleIds.map(id => getProduct(state, id))
+
 export default combineReducers({
   byId,
   visibleIds
 })
-
-export const getProduct = (state, id) =>
-  state.byId[id]
-
-export const getVisibleProducts = state =>
-  state.visibleIds.map(id => getProduct(state, id))

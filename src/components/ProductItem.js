@@ -12,17 +12,18 @@ const productImages = {
   3: image3,
 };
 
-const ProductItem = ({ product, onAddToCartClicked }) => (
+const ProductItem = ({ product, addToCart }) => (
   <div className='productItem'>
     <img className='productImage' src={productImages[product.id]} alt='' />
     <div className='productInfo'>
       <Product
         title={product.title}
         price={product.price}
+        quantity={1}
         inventory={product.inventory} />
       <button
         className='productButton'
-        onClick={onAddToCartClicked}
+        onClick={() => addToCart(product.id)}
         disabled={product.inventory > 0 ? '' : 'disabled'}>
         {product.inventory > 0 ? 'ADD TO CART' : 'SOLD OUT'}
       </button>
@@ -36,7 +37,7 @@ ProductItem.propTypes = {
     price: PropTypes.number.isRequired,
     inventory: PropTypes.number.isRequired
   }).isRequired,
-  onAddToCartClicked: PropTypes.func.isRequired
+  addToCart: PropTypes.func.isRequired
 }
 
 export default ProductItem

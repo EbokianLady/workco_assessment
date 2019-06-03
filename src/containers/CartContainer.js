@@ -1,19 +1,30 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { checkout, hideCart } from '../actions';
+import {
+  addToCart,
+  checkout,
+  hideCart,
+  removeFromCart,
+  removeProductFromCart,
+  updateCart
+} from '../actions';
 import { getTotal, getCartProducts } from '../reducers';
 import Cart from '../components/Cart';
 import '../styles/containers/cart.scss';
 
-const CartContainer = ({ quantitiesById, products, total, checkout, isVisible, hideCart }) => (
+const CartContainer = (props) => (
   <Cart
-    quantitiesById={quantitiesById}
-    products={products}
-    total={total}
-    isVisible={isVisible}
-    hideCart={hideCart}
-    onCheckoutClicked={() => checkout(products)} />
+    products={props.products}
+    isVisible={props.isVisible}
+    total={props.total}
+    addToCart={props.addToCart}
+    hideCart={props.hideCart}
+    onCheckoutClicked={() => props.checkout(props.products)}
+    removeFromCart={props.removeFromCart}
+    removeProductFromCart={props.removeProductFromCart}
+    updateCart={props.updateCart}
+  />
 )
 
 CartContainer.propTypes = {
@@ -23,14 +34,17 @@ CartContainer.propTypes = {
     price: PropTypes.number.isRequired,
     quantity: PropTypes.number.isRequired
   })).isRequired,
-  total: PropTypes.string,
   isVisible: PropTypes.bool,
+  total: PropTypes.string,
+  addToCart: PropTypes.func.isRequired,
   checkout: PropTypes.func.isRequired,
-  hideCart: PropTypes.func.isRequired
+  hideCart: PropTypes.func.isRequired,
+  removeFromCart: PropTypes.func.isRequired,
+  removeProductFromCart: PropTypes.func.isRequired,
+  updateCart: PropTypes.func.isRequired
 }
 
 const mapStateToProps = (state) => ({
-  quantitiesById: state.cart.quantityById,
   products: getCartProducts(state),
   total: getTotal(state),
   isVisible: state.cart.visible,
@@ -38,5 +52,12 @@ const mapStateToProps = (state) => ({
 
 export default connect(
   mapStateToProps,
-  { checkout, hideCart }
+  {
+    addToCart,
+    checkout,
+    hideCart,
+    removeFromCart,
+    removeProductFromCart,
+    updateCart
+  }
 )(CartContainer)

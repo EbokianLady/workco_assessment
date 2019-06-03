@@ -4,16 +4,19 @@ import CartInventory from './CartInventory';
 import { ReactComponent as CloseIcon } from '../styles/icons/close.svg';
 import { ReactComponent as CartIcon } from '../styles/icons/cart.svg';
 
-const Cart  = ({ quantitiesById, products, total, onCheckoutClicked, isVisible, hideCart }) => {
-  const hasProducts = products.length > 0;
-  const display = isVisible ? '' : 'none';
+const Cart  = (props) => {
+  const hasProducts = props.products.length > 0;
+  const display = props.isVisible ? '' : 'none';
   const buttonStyle = hasProducts ? '' : 'none';
   const cart = hasProducts ? (
     <CartInventory
-      products={products}
-      quantitiesById={quantitiesById}
-      total={total}
-      onCheckoutClicked={onCheckoutClicked}
+      products={props.products}
+      total={props.total}
+      addToCart={props.addToCart}
+      onCheckoutClicked={props.onCheckoutClicked}
+      removeFromCart={props.removeFromCart}
+      removeProductFromCart={props.removeProductFromCart}
+      updateCart={props.updateCart}
     />
   ) : (
     <div className='emptyCart'>
@@ -32,7 +35,7 @@ const Cart  = ({ quantitiesById, products, total, onCheckoutClicked, isVisible, 
           <h3>Your Cart</h3>
           <button
             className='closeButton'
-            onClick={hideCart}>
+            onClick={props.hideCart}>
             <CloseIcon/>
           </button>
         </header>
@@ -41,7 +44,7 @@ const Cart  = ({ quantitiesById, products, total, onCheckoutClicked, isVisible, 
         <button
           className='checkoutButton'
           style={{ display: buttonStyle }}
-          onClick={onCheckoutClicked}>
+          onClick={props.onCheckoutClicked}>
           CHECKOUT
         </button>
       </div>
@@ -53,8 +56,12 @@ Cart.propTypes = {
   products: PropTypes.array,
   total: PropTypes.string,
   isVisible: PropTypes.bool,
-  hideCart: PropTypes.func,
-  onCheckoutClicked: PropTypes.func
+  addToCart: PropTypes.func.isRequired,
+  hideCart: PropTypes.func.isRequired,
+  removeFromCart: PropTypes.func.isRequired,
+  removeProductFromCart: PropTypes.func.isRequired,
+  onCheckoutClicked: PropTypes.func.isRequired,
+  updateCart: PropTypes.func.isRequired
 }
 
 export default Cart

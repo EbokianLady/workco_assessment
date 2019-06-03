@@ -1,11 +1,10 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import ProductsContainer from './ProductsContainer';
 import CartContainer from './CartContainer';
-import { ReactComponent as CartIcon } from '../styles/icons/cart.svg';
+import ProductsContainer from './ProductsContainer';
 import { showCart } from '../actions/index';
+import { ReactComponent as CartIcon } from '../styles/icons/cart.svg';
 import '../styles/containers/app.scss';
-import { start } from 'pretty-error';
 
 const App = ({ cartItems, showCart }) => {
   const hasProducts = (cartItems.addedIds.length > 0);
