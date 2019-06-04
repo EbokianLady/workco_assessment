@@ -22,8 +22,8 @@ const CartItem = ({ product, addToCart, removeFromCart, removeProductFromCart })
         <img className='cartItemImage' src={productImages[product.id]} alt='' />
         <div className='cartInfo'>
           <Product
-            title={product.title}
-            price={product.price}
+            title={product.productTitle}
+            price={product.price.value}
             quantity={product.quantity || 0}
             key={product.id} />
           <button
@@ -54,8 +54,11 @@ const CartItem = ({ product, addToCart, removeFromCart, removeProductFromCart })
 
 CartItem.propTypes = {
   product: PropTypes.shape({
-    title: PropTypes.string.isRequired,
-    price: PropTypes.number.isRequired,
+    productTitle: PropTypes.string.isRequired,
+    price: PropTypes.shape({
+      currency: PropTypes.string.isRequired,
+      value: PropTypes.number.isRequired
+    }),
     inventory: PropTypes.number.isRequired
   }).isRequired,
   addToCart: PropTypes.func.isRequired,
@@ -63,4 +66,4 @@ CartItem.propTypes = {
   removeProductFromCart: PropTypes.func.isRequired
 }
 
-export default CartItem
+export default CartItem;

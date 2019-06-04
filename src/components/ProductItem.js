@@ -17,8 +17,8 @@ const ProductItem = ({ product, addToCart }) => (
     <img className='productImage' src={productImages[product.id]} alt='' />
     <div className='productInfo'>
       <Product
-        title={product.title}
-        price={product.price}
+        title={product.productTitle}
+        price={product.price.value}
         quantity={1}
         inventory={product.inventory} />
       <button
@@ -33,8 +33,11 @@ const ProductItem = ({ product, addToCart }) => (
 
 ProductItem.propTypes = {
   product: PropTypes.shape({
-    title: PropTypes.string.isRequired,
-    price: PropTypes.number.isRequired,
+    productTitle: PropTypes.string.isRequired,
+    price: PropTypes.shape({
+      currency: PropTypes.string.isRequired,
+      value: PropTypes.number.isRequired
+    }),
     inventory: PropTypes.number.isRequired
   }).isRequired,
   addToCart: PropTypes.func.isRequired

@@ -1,6 +1,26 @@
 import shop from '../api/shop';
 import * as types from '../constants/ActionTypes';
 
+
+const receiveProducts = products => ({
+  type: types.RECEIVE_PRODUCTS,
+  products: products
+});
+
+export const getAllProducts = () => dispatch => {
+  shop.getProducts(payload => {
+    const products = Object.values(payload.data);
+    console.log(products);
+    dispatch(receiveProducts(products));
+  });
+};
+
+// export const getAllProducts = () => dispatch => {
+//   shop.fetchProducts().then(products => {
+//     dispatch(receiveProducts(products));
+//   });
+// };
+
 const hideCartUnsafe = () => ({
   type: types.HIDE_CART,
   isVisible: false,
@@ -17,17 +37,6 @@ const showCartUnsafe = () => ({
 
 export const showCart = () => (dispatch, getState) => {
   dispatch(showCartUnsafe());
-};
-
-const receiveProducts = products => ({
-  type: types.RECEIVE_PRODUCTS,
-  products: products
-});
-
-export const getAllProducts = () => dispatch => {
-  shop.getProducts(products => {
-    dispatch(receiveProducts(products));
-  });
 };
 
 const addToCartUnsafe = productId => ({
