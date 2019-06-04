@@ -15,17 +15,19 @@ const initialState = {
 };
 
 const addedIds = (state = initialState.addedIds, action) => {
-  const { productId } = action;
-  const index = state.indexOf(action.productId);
+  const { product, productId } = action;
+  let index;
 
   switch (action.type) {
     case ADD_TO_CART:
+      index = state.indexOf(productId);
       if (index !== -1) {
         return state;
       }
-      return [ ...state, action.productId ];
+      return [ ...state, productId ];
     case REMOVE_PRODUCT_FROM_CART:
-      state.splice(productId, 1);
+      index = state.indexOf(product.id);
+      state.splice(index, 1);
       return state;
     default:
       return state;

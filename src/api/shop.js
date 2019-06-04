@@ -1,6 +1,3 @@
-/**
- * Mocking client-server processing
- */
 // import _products from './products.json';
 import axios from 'axios';
 
@@ -13,8 +10,3 @@ export default {
   },
   buyProducts: (payload, cb, timeout) => setTimeout(() => cb(), timeout || TIMEOUT)
 };
-
-
-// fetchProducts: () => {
-//   return axios.get('http://tech.work.co/shopping-cart/products.json');
-// }

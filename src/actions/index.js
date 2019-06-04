@@ -10,16 +10,9 @@ const receiveProducts = products => ({
 export const getAllProducts = () => dispatch => {
   shop.getProducts(payload => {
     const products = Object.values(payload.data);
-    console.log(products);
     dispatch(receiveProducts(products));
   });
 };
-
-// export const getAllProducts = () => dispatch => {
-//   shop.fetchProducts().then(products => {
-//     dispatch(receiveProducts(products));
-//   });
-// };
 
 const hideCartUnsafe = () => ({
   type: types.HIDE_CART,
@@ -59,14 +52,6 @@ export const removeFromCart = productId => (dispatch, getState) => {
   dispatch(removeFromCartUnsafe(productId));
 };
 
-const updateCartUnsafe = () => ({
-  type: types.UPDATE_CART,
-});
-
-export const updateCart = () => (dispatch, getState) => {
-  dispatch(updateCartUnsafe());
-};
-
 const removeProductFromCartUnsafe = (product) => ({
   type: types.REMOVE_PRODUCT_FROM_CART,
   product
@@ -74,6 +59,14 @@ const removeProductFromCartUnsafe = (product) => ({
 
 export const removeProductFromCart = (product) => (dispatch, getState) => {
   dispatch(removeProductFromCartUnsafe(product));
+};
+
+const updateCartUnsafe = () => ({
+  type: types.UPDATE_CART,
+});
+
+export const updateCart = () => (dispatch, getState) => {
+  dispatch(updateCartUnsafe());
 };
 
 export const checkout = products => (dispatch, getState) => {
